@@ -6,7 +6,7 @@ A cross-stitch unit produces the weighted sum of the outputs of two (or more) ne
 
 The `crossstitch.FlexibleCrossStitch` class is instantiated with constructor methods for the various pieces of the child networks which are to be joined with cross-stitch units. For example:
 
-``
+```
 class SimpleNet(nn.Module):
     def __init__(self, input_size=100, output_size=1):
         super().__init__()
@@ -26,11 +26,11 @@ pre = lambda: SimpleNet(input_size=50, output_size=32)
 post = lambda: SimpleNet(input_size=32, output_size=1)
 
 fcs = FlexibleCrossStitch([pre, post], split=2)
-``
+```
 
 This produces the following network:
 
-``
+```
 FlexibleCrossStitch(
   (net_1_1): SimpleNet(
     (fc1): Linear(in_features=50, out_features=64, bias=True)
@@ -55,7 +55,7 @@ FlexibleCrossStitch(
   )
 )
 
-``
+```
 
 At the CrossStitchUnit, the two 32-vectors will be weighted and then passed to the inputs of the second layer of SimpleNets.
 
